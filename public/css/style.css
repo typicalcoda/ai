@@ -1,0 +1,412 @@
+
+
+/*================- mohamed's css ================*/
+.modifier-modal{
+
+	background: #f1f1f1;
+	width: 20%;
+	height: 400px;
+	padding: 20px;
+	border-radius: 15px;
+	position:fixed;
+	top:25%;
+	left:50%;
+	transform:translateX(-50%);
+	z-index:99;
+	display:none;
+
+	-webkit-box-shadow: 0px 0px 49px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 49px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 49px 0px rgba(0,0,0,0.75);
+}
+.modifier-modal h3{
+	padding-bottom:25px;
+}
+.modifier-modal .well{
+	height:calc(100% - 24%);
+	overflow: scroll;
+	overflow-x: hidden;
+}
+.modifier-modal .well ul li span:first-of-type{
+	float: right;
+	position: relative;
+	top: -2px;
+	padding: 2px 5px;
+	background: #8cc1c1;
+	border-radius: 5px;
+	color: #4e7b7b;
+	font-family: calibri;
+}
+.modifier-modal .well ul li{
+	padding: 10px 5px;
+	background: #e2e2e2;
+	border-radius: 5px;
+	margin: 10px 0;
+	font-family: calibri;
+	padding-left: 15px;
+	transition:.2s ease-in-out;
+}
+.modifier-modal .well ul li:hover{
+	background:#d0d0d0;
+	cursor:pointer;
+}
+
+.qty{
+	border: 0 none;
+	border-radius: 38%;
+	background: #7b7b7b;
+	color: #fff;
+	outline: 0;
+	font-size: 8px;
+	width: 18px;
+	height: 17px;
+	margin: 0 2px;
+}
+
+.remove,.leaf{
+	border: 0 none;
+	/* border-radius: 50%; */
+	background: #b53737;
+	color: #fff;
+	outline: 0;
+	display: inline-block;
+	margin-right: 2px;
+}
+.leaf{
+	background:#3786b5;
+}
+#modal{
+	display: none;
+	background:rgba(0, 0, 0, 0.59);
+	position:fixed;
+	top:0;
+	left:0; 
+	bottom:0;
+	right:0;
+	z-index:999;
+}
+#modal .content{
+	background:#d2d2d2;
+	padding:20px;
+	position:relative;
+	top:20%;
+	border-radius:10px;
+	margin:0 auto;
+	width:25%;
+}
+#modal .content .products{
+	padding-top:35px;
+}
+
+.error{
+	padding: 10px 5px;
+	background: #f9b8b8;
+	border: 1px solid #deb2b2;
+	margin:10px 0;
+	color:#b77676;
+}
+a,a:active,a:focus,a:hover{
+	text-decoration: none;
+	color:#fff
+}
+ul{
+	padding:0;margin:0
+}
+
+ul.list-products {
+	margin: 5px;
+}
+
+ul li {list-style: none}
+
+.list-products li .product{
+
+	position:relative;
+	background:#dedede;
+	border-radius:5px;
+	padding:10px 5px;
+	margin-bottom:10px;
+	transition:.3s ease-in-out;
+	border:1px solid #b3b3b3
+}
+
+.list-products li .product:hover{
+	background:#a2a2a2;
+	cursor:pointer;
+}
+
+.list-products li .product .name{
+	
+	font-weight:bold;
+	top:0; left:0;
+	color:red;
+
+}
+
+.list-products li .product .price{ 
+
+	position:absolute;
+	top:0;right:0;
+	background:#484848;
+	color:#fff;
+	padding:5px;
+	margin:10px;
+	border-radius:10px;
+	font-size:12px;
+}
+
+.list-products li .product .description{
+
+	margin-left:10px;
+	display:block;
+
+} 
+
+
+/*================================================*/
+.none{
+	padding-left: 0;
+	padding-right: 0;
+}
+.inside-mainimg{
+	height: 340px;
+	background-size: cover;
+	background-position: center center;
+	background-image: url('../images/inside1.jpg');
+}
+
+.top-banner{
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 145px;
+}
+
+.logo{
+	margin-top: 20px;
+}
+
+.phone{
+	color: #fff;
+	padding-top: 5px;
+	text-align: right;
+	font-size: 14px;
+}
+
+.phone p span{
+	font-weight: bold;
+	padding-right: 5px;
+}
+
+.nav{
+	position: relative;
+}
+
+.navigation{
+	position: absolute;
+	top: 30px;
+}
+
+.navigation{
+	color: #fff;
+}
+
+.navigation li{
+	display: inline;
+	font-size: 15px;
+	line-height: 35px;
+	text-transform: uppercase;
+	padding: 10px 15px 10px;
+}
+
+.navigation li a{
+	color: #fff;
+}
+
+.navigation li a:hover{
+	text-decoration: none;
+	color: #b3b3b3;
+	cursor: pointer;
+	transition: all .5s ease-in-out;
+}
+
+.inside-content h1{
+	font-size: 23px;
+	color: #000;
+	margin-bottom: 15px;
+	font-family: "Open Sans" serif;
+	font-weight: 400;
+}
+
+.inside-content p{
+	color: #000;
+	margin-top: 7px;
+	margin-bottom: 15px;
+	font-family: "Open Sans" serif;
+	line-height: 18px;
+	font-size: 13px;
+}
+
+.inside-content{
+	margin-top: 30px;
+	margin: 0 auto;
+	padding-top: 30px;
+	padding-left: 105px;
+	padding-right: 105px;
+	padding-bottom: 80px;
+}
+
+
+.method h2{
+	color: #fff;
+	background: #d61a1a;
+	padding: 10px;
+	padding-left: 12px;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+
+.selection-category h3{
+	background-color: #7d7765;
+	padding: 7px;
+	padding-left: 12px;
+	color: #fff;
+	margin-top: 5px !important;
+	margin-bottom: 5px;
+	font-weight: normal;
+}
+
+.order-summary{
+	background-color: #7d7765;
+	color: #fff;
+	padding:5px;
+	padding-top: 0px;
+}
+
+.order-summary h3{
+	padding-top: 7px;
+	padding-left: 5px;
+	font-weight: normal;
+}
+
+.order-summary table{
+	background: #fff;
+	color: #000;
+}
+
+.order-list{
+	margin-bottom: 10px !important;
+}
+
+.clear-btn{
+	margin-right: 5px;
+}
+.clear-btn, .checkout-btn{
+	width: 165px;
+	height: 50px;
+	border-radius: 0;
+}
+
+.btn-danger {
+	background-color: #ec131a !important;
+}
+
+.btn-success {
+	background-color: #3cb64b !important
+}
+
+.fa-trash, .fa-shopping-cart{
+	padding-right: 5px;
+}
+
+.food-categories{
+	border: 1px solid #7d7765;
+	background: #7d7765;
+	padding: 3px;
+}
+
+.food-cat{
+	background-color: #d2cab2;
+	list-style-type: none;
+	font-weight: normal;
+	color: #000;
+	border: 1px solid #7d7765;
+	
+}
+
+.food-cat:hover{
+	background-color: #d61a1a;
+	color: #fff;
+}
+
+.food-cat a{
+	color: #000;
+	padding: 10px;
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.food-cat a:hover{
+	color: #fff;
+}
+
+
+/****/
+
+.members-bar{
+	background-color: #d61a1a;
+	color: #fff;
+	margin-top: 15px;
+}
+
+.members-bar .fa{
+	font-size: 25px;
+	padding: 10px 13px;
+	background-color: #b52525;
+}
+
+.members-bar p, .register-bar p{
+	display: table;
+}
+
+.members-title, .register-title{
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 10px;
+}
+
+.register-bar{
+	background-color: #7d7765;
+	color: #fff;
+	margin-top: 15px;
+}
+
+.register-bar .fa{
+	font-size: 25px;
+	padding: 10px 13px;
+	background-color: #655f4d;
+}
+
+.bar-desc{
+	line-height: 1.5em;
+	margin-bottom: 15px;
+	color: #5d7078;
+}
+
+.login-section, .register-section{
+	border: 1px solid #CFCFCF;
+	margin-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+}
+
+.login-section{
+	margin-right: 15px;
+	background-color: #ececec;
+}
+
+.mem-login-btn{
+	float: right;
+}
+
+
+

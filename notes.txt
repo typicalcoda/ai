@@ -1,0 +1,31 @@
+05/04/2017
+✔ Fix decimal point issue when number is whole or .50 
+✔ Implement functionality for increasing or decreasing quantitiy
+✔ Removing a product should deduct appropriate price
+✔ Display total price at the bottom of the cart
+✔ Clear all functionality should remove all products and reset total price
+
+
+14/04/2017
+✔ Complete tasks from previous notes
+✔ Change the total at the bottom of the cart when thw quantity for a given item is changed
+
+17/04/2017
+✔ Check that the items from the subcategories work like the normal products
+
+
+22/04/2017
+✔ Fixed a bug in the cart
+✔ Categories/Sub-categories' browsing works good
+✔ Order transmission from cart to checkout
+-  On return, user should see their order restored
+-  Checkout message (ai/members/checkout.php for notes)
+
+
+
+24/04/2017
+✔ Started creating the modifier modal
+✔ Implemented the button for showing the modifier
+✔ Created modifier table in the database, items are being generated dynamically
+- Functionality for adding modifier (including price addition to individual item + total price)
+- Revisit incompleted tasks
