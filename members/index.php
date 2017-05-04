@@ -10,17 +10,33 @@
 
 			$q = new Query();
 			foreach($q->getAll('modifiers', 'sort_order', true) as $m)
-				echo "<li><span>$m[price]</span><span>$m[name]</span></li>";
+				echo "<li id=\"mod\"><span>£$m[price]</span><span>$m[name]</span></li>";
 
 
 			?>
 		</ul>
 
 	</div>
-
-	<button class="btn btn-info apply">OK</button>
-	<button class="btn btn-danger exit-modifier">Cancel</button>
+	<button class="btn btn-default exit-modifier">Return</button>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div id="modal">
 	<div class="content">
@@ -85,46 +101,55 @@
 		<div class="order-summary">
 			<h3>Your Order</h3>
 			<table id="order" class="table table-condensed product-basket order-list">
-				<thead>
-					<tr>
-						<th width="5">Qty</th>
-						<th width=85>Product</th>
-						<th width="5">Total</th>
-						<th width="5"></th>
-					</tr>
-				</thead>
-				<tbody id="cart">
+				
+				
+				<!-- This is where our items will be listed as cart items-->
+				<?php
+				if(isset($_GET['order'])){
 					
-					<!-- This is where our items will be listed as cart items-->
+					if(isset($_SESSION['order']))
+						print_r($_SESSION['order']);
 
+				}
+				else {
+					?>
 
-
-
-				</tbody>
-				<tfoot>
-					<tr>
-						<th></th>
-						<th>Total:</th>
-						<th class="price">£<span class="basket-subtotal">0.00</span></th>
-						<th></th>
-					</tr>
-				</tfoot>
-			</table>
-			<div class="row">
-				<div class="col-md-12">
-					<button type="submit" onclick="clearCart()" class="btn btn-danger clear-btn"><i class="fa fa-trash" aria-hidden="true"></i>Clear All</button>
-					<button id="checkout" type="submit" class="btn btn-success checkout-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Checkout</button>
+					<thead>
+						<tr>
+							<th width="5">Qty</th>
+							<th width=85>Product</th>
+							<th width="5">Total</th>
+							<th width="5"></th>
+						</tr>
+					</thead>
+					<tbody id="cart">
+						
+					</tbody>
+					<tfoot>
+						<tr>
+							<th></th>
+							<th>Total:</th>
+							<th class="price">£<span class="basket-subtotal">0.00</span></th>
+							<th></th>
+						</tr>
+					</tfoot>
+					<?php } ?>
+				</table>
+				<div class="row">
+					<div class="col-md-12">
+						<button type="submit" onclick="clearCart()" class="btn btn-danger clear-btn"><i class="fa fa-trash" aria-hidden="true"></i>Clear All</button>
+						<button id="checkout" type="submit" class="btn btn-success checkout-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Checkout</button>
+					</div>
 				</div>
 			</div>
-		</div>
 
 
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+			<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-		<script>
-			var siteUrl = "<?php echo site_url(); ?>";
-		</script>
-		<script src="<?php echo assets('js/script.js'); ?>"></script>
+			<script>
+				var siteUrl = "<?php echo site_url(); ?>";
+			</script>
+			<script src="<?php echo assets('js/script.js'); ?>"></script>
 
-	</body>
-	</html>
+		</body>
+		</html>

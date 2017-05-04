@@ -1,5 +1,15 @@
 
+var toModify = null;
+
 // FUNCTIONS ======================
+function applyModifier(item, modifier){
+
+	
+	item.children()[1].innerHTML += "<br/>-<span style='font-size:12px;font-style:italic;'>" + modifier.name + "</span>";
+	item.children()[2].innerHTML += "<br/><span style='font-size:12px;font-style:italic;'>£" + modifier.price + "</span>";
+
+}
+
 function addItem(name,price, sc){
 	sc = sc.replaceAll("%20", " ");
 	sc = sc.replaceAll("%2520", " ");
@@ -109,10 +119,23 @@ $(document).ready(function(){
 
 	$("body").on('click','.leaf', function(){
 
-		var productName = $(this).parent().parent().children()[1].innerText;
-		$(".modifier-modal .title").html("Add modifier to <b>" + productName + "</b>");
+		toModify = $(this).parent().parent(); //global var
+		$(".modifier-modal .title").html("Add modifier to <b>" + toModify.children()[1].innerText + "</b>");
 		$(".modifier-modal").fadeIn(300);
 
+	});
+
+	$("body").on('click', '#mod', function(){
+		
+		var modifierText = $(this).children()[1].innerText;		
+		var modifierPrice = $(this).children()[0].innerText.substr(1);	
+
+		var modifier = {
+			name : modifierText,
+			price : modifierPrice
+		};
+
+		applyModifier(toModify, modifier);
 
 	});
 

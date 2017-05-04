@@ -18,8 +18,8 @@
 ✔ Fixed a bug in the cart
 ✔ Categories/Sub-categories' browsing works good
 ✔ Order transmission from cart to checkout
--  On return, user should see their order restored
--  Checkout message (ai/members/checkout.php for notes)
+✔  On return, user should see their order restored
+✔  Checkout message (ai/members/checkout.php for notes)
 
 
 
@@ -28,4 +28,10 @@
 ✔ Implemented the button for showing the modifier
 ✔ Created modifier table in the database, items are being generated dynamically
 - Functionality for adding modifier (including price addition to individual item + total price)
+✔ Revisit incompleted tasks
+
+
+30/04/2017
 - Revisit incompleted tasks
+- Fix bug where modifier box is using the entire product name + its modifiers as a title 
+- Make the title fade out and back in with changes when a different product is selected for modification

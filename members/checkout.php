@@ -33,15 +33,16 @@
 			if(isset($_SESSION['order'])){
 				echo $_SESSION['order'];
 			} else {
-		   echo '<p style="padding: 16px 13px;background: #a5daac;display: inline-block;border-radius: 11px;font-family: segoe ui;border: 1px solid #a8ce9e;color: #5c6b68;">No order m8</p>';
+				echo '<p style="padding: 16px 13px;background: #a5daac;display: inline-block;border-radius: 11px;font-family: segoe ui;border: 1px solid #a8ce9e;color: #5c6b68;">No order m8</p>';
 			}
 			?>
 		</table>
 
 		<button class="btn btn-success">Confirm Order</button> <!-- no payment gateway necessary, just output a conclusive msg.-->
-		<button class="btn btn-default">Return</button> <!-- back with sesh restoration in cart-->
+		<a href="<?php echo site_url(); ?>members/?order=1">
+			<button class="btn btn-default">Return</button> <!-- back with sesh restoration in cart-->
+		</a>
 
-	
 	</div>
 	
 
