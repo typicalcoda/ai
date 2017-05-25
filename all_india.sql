@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2017 at 06:21 PM
+-- Generation Time: May 25, 2017 at 09:11 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -93,6 +93,19 @@ CREATE TABLE `modifiers` (
 INSERT INTO `modifiers` (`id`, `name`, `price`, `sort_order`) VALUES
 (1, 'Less hot', '0.00', 0),
 (2, 'With Mushrooms', '1.00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `items` text NOT NULL,
+  `date` timestamp NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -533,6 +546,12 @@ ALTER TABLE `modifiers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -563,6 +582,11 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `modifiers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products`
 --
