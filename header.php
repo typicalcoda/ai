@@ -21,7 +21,7 @@
 					</div>
 					<div class="col-md-8">
 						<div class="phone">
-							<p><span>Call Us:</span> 01202 420951 | 01202 421884 
+							<p><span>Call Us:</span> 01202 420951 | 01202 421884 | <a href="<?php echo site_url() ?>members/account.php">My Account</a>
 								<?php 
 
 								if(isset($_SESSION['User'])) //if anyone is logged in
@@ -46,11 +46,11 @@
 						<div class="nav">
 							<ul class="navigation">
 								<li><a href="<?php echo site_url()?>">Home</a></li>
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Online Ordering</a></li>
-								<li><a href="<?php echo site_url()?>login.php">Members</a></li>
-								<li><a href="#">Testimonials</a></li>
-								<li><a href="#">Contact Us</a></li>
+								<li><a href="<?php echo site_url()?>about.php">About Us</a></li>
+								<li><a href="<?php echo site_url()?>login.php">Online Ordering</a></li>
+								<!--<li><a href="<?php echo site_url()?>login.php">Members</a></li>-->
+								<li><a href="<?php echo site_url()?>testimonials.php">Testimonials</a></li>
+								<li><a href="<?php echo site_url()?>contact.php">Contact Us</a></li>
 							</ul>
 						</div>
 					</div>

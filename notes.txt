@@ -13,7 +13,6 @@
 17/04/2017
 ✔ Check that the items from the subcategories work like the normal products
 
-
 22/04/2017
 ✔ Fixed a bug in the cart
 ✔ Categories/Sub-categories' browsing works good
@@ -22,16 +21,29 @@
 ✔  Checkout message (ai/members/checkout.php for notes)
 
 
-
 24/04/2017
 ✔ Started creating the modifier modal
 ✔ Implemented the button for showing the modifier
 ✔ Created modifier table in the database, items are being generated dynamically
-- Functionality for adding modifier (including price addition to individual item + total price)
+✔ Functionality for adding modifier (including price addition to individual item + total price)
 ✔ Revisit incompleted tasks
 
 
 30/04/2017
-- Revisit incompleted tasks
-- Fix bug where modifier box is using the entire product name + its modifiers as a title 
-- Make the title fade out and back in with changes when a different product is selected for modification
+✔ Revisit incompleted tasks
+✔ Fix bug where modifier box is using the entire product name + its modifiers as a title 
+✔ Make the title fade out and back in with changes when a different product is selected for modification
+
+
+13/05/2017
+✔ Revisit incompleted tasks
+✔ Feedback at the end of the procedure
+✔ Get rid of all logging mechanisms
+✔ Thorough testing
+✔ Remove buttons from cart on checkout page
+
+
+20/05/2017
+- See 'order_completed.php' for notes 
+- Finish inserting the order in the database 
+- List completed orders for each user on their "My Account" page

@@ -4,10 +4,14 @@ var toModify = null;
 // FUNCTIONS ======================
 function applyModifier(item, modifier){
 
-	
-	item.children()[1].innerHTML += "<br/>-<span style='font-size:12px;font-style:italic;'>" + modifier.name + "</span>";
+
+	$(item.children()[1]).children()[0].innerHTML += "-<span style='font-size:12px;font-style:italic;'>" + modifier.name + "</span><br>";
 	item.children()[2].innerHTML += "<br/><span style='font-size:12px;font-style:italic;'>£" + modifier.price + "</span>";
 
+	var currentPrice = $(".basket-subtotal").text() * 1;
+	var newPrice = ((modifier.price*1) + currentPrice).toFixed(2);
+
+	$(".basket-subtotal").text(newPrice);
 }
 
 function addItem(name,price, sc){
@@ -15,7 +19,7 @@ function addItem(name,price, sc){
 	sc = sc.replaceAll("%2520", " ");
 	name = name.replaceAll("%2520", " ");
 	name = name.replaceAll("%20", " ");
-	var content = "<tr data-price=" + price + "><td><button data-qty=\"plus\" class=\"qty\"><i class=\"fa fa-plus fa-fw\"></i></button><span class=\"show-qty\">x1</span><button data-qty=\"minus\" class=\"qty\"><i class=\"fa fa-minus fa-fw\"></i></button></td><td>"+name+" (" + sc +")</td><td>£"+(price*1).toFixed(2)+"</td><td><button class=\"remove\"><i class=\"fa fa-remove\"></i></button><button class=\"leaf\"><i class=\"fa fa-leaf fa-fw\"></i></button></td></tr>";
+	var content = "<tr data-price=" + price + "><td><button data-qty=\"plus\" class=\"qty\"><i class=\"fa fa-plus fa-fw\"></i></button><span class=\"show-qty\">x1</span><button data-qty=\"minus\" class=\"qty\"><i class=\"fa fa-minus fa-fw\"></i></button></td><td>"+name+" (" + sc +")<div class='modifiers'></div></td><td>£"+(price*1).toFixed(2)+"</td><td><button class=\"remove\"><i class=\"fa fa-remove\"></i></button><button class=\"leaf\"><i class=\"fa fa-leaf fa-fw\"></i></button></td></tr>";
 	$("#cart").append(content);
 
 	//price 
@@ -23,11 +27,6 @@ function addItem(name,price, sc){
 	var newPrice = (price + currentPrice).toFixed(2);
 
 	$(".basket-subtotal").text(newPrice);
-
-
-
-	
-
 }
 String.prototype.replaceAll = function(search, replacement) {
 	var target = this;
@@ -97,9 +96,22 @@ function loadIntoView(items, isSubcategory, categoryName){
 
 function clearCart(){
 
-	$("#cart").html("");
 
+	// Visually clear the cart
+	$("#cart").html("");
 	$(".basket-subtotal").text("0.00");
+
+
+	//Clear the order session
+	$.ajax({
+
+		type:'POST',
+		url: siteUrl+"api/clear_sesh.php",
+		success:function(){
+
+
+		}
+	});
 }
 
 
@@ -120,7 +132,12 @@ $(document).ready(function(){
 	$("body").on('click','.leaf', function(){
 
 		toModify = $(this).parent().parent(); //global var
-		$(".modifier-modal .title").html("Add modifier to <b>" + toModify.children()[1].innerText + "</b>");
+		var productName = toModify.children()[1].innerText;
+		$(".modifier-modal .title").fadeOut(function(){
+
+			$(this).html("Add modifier to <b>" + productName.substr(0, productName.indexOf('(')) + "</b>").fadeIn()
+			
+		});
 		$(".modifier-modal").fadeIn(300);
 
 	});
@@ -149,7 +166,6 @@ $(document).ready(function(){
 			data: 'order=' + $("#order").html(),
 			success:function(data){
 
-				console.log(data);
 
 			}
 		});
@@ -179,18 +195,16 @@ $(document).ready(function(){
 
 		// price updating affects both circumstances
 
-		console.log("Price is now being updated, okay?");
 		var row = $(this).parent().parent();
 		var originalProductPrice = ($(row).data('price') * 1);
-		console.log("Original Price: " + originalProductPrice);
-		var currentPrice = ($(row).children()[2].innerHTML.substr(1) * 1);
-		console.log(("Current Price: " + currentPrice));
+		
+	
+		var currentPrice = (($(row).children()[2].innerHTML.match(/£/g) || []).length > 1) ? ($($(row).children()[2]).clone().children().remove().end().text().substr(1) * 1) : ($(row).children()[2].innerHTML.substr(1) * 1);
 		var newPrice = addOrRemove ? (currentPrice + originalProductPrice) : (currentPrice - originalProductPrice);
-		console.log("New Price: " + newPrice);
 		var priceField = $(row).children()[2];
 
 		// as well as updating the item's price
-		priceField.innerHTML = "£" + newPrice.toFixed(2);
+		priceField.innerHTML = "£" + newPrice.toFixed(2); //#COMEBQ
 
 		// we also need to update the overall total price
 		var currentTotalPrice = ($(".basket-subtotal").text() * 1);
@@ -208,12 +222,23 @@ $(document).ready(function(){
 	$("body").on('click', '.remove', function(){
 		
 		var tr = $(this).closest('tr');
-		var price = tr.children()[2].innerHTML.substr(1);
 
-		console.log("The price is: "+ price);
+		var price = tr.children()[2].innerText;
+
+		var temp1 = price;
+		var count1 = (temp1.match(/£/g) || []).length;
+
+		if(count1 > 1){
+			var prices = price.split('\n');
+			price = 0;
+			$.each(prices, function(i){
+				price = ((price * 1) + (prices[i].substr(1) * 1)).toFixed(2);
+			});
+		} else 
+		price = price.substr(1);
+
 
 		tr.remove();
-
 			// GET PRICE (without currency symbol)
 			var currentPrice = $(".basket-subtotal").text();
 			var newPrice = (currentPrice - price).toFixed(2);

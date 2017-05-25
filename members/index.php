@@ -21,23 +21,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="modal">
 	<div class="content">
 		<h3>Select Product</h3>
@@ -105,10 +88,10 @@
 				
 				<!-- This is where our items will be listed as cart items-->
 				<?php
-				if(isset($_GET['order'])){
+				if(isset($_GET['order']) && isset($_SESSION['order']))
+				{
 					
-					if(isset($_SESSION['order']))
-						print_r($_SESSION['order']);
+					print_r($_SESSION['order']);
 
 				}
 				else {
