@@ -35,15 +35,37 @@
 ✔ Make the title fade out and back in with changes when a different product is selected for modification
 
 
-13/05/2017
+13/05/2017 [1:00]
 ✔ Revisit incompleted tasks
 ✔ Feedback at the end of the procedure
 ✔ Get rid of all logging mechanisms
 ✔ Thorough testing
 ✔ Remove buttons from cart on checkout page
 
+14/05/2017 [2:00]
+-No notes-
 
-20/05/2017
-- See 'order_completed.php' for notes 
-- Finish inserting the order in the database 
-- List completed orders for each user on their "My Account" page
+19/05/2017 [00:30 - Added to 26/05/2017]
+- No notes-
+
+20/05/2017 [1:00]
+✔ See 'order_completed.php' for notes 
+✔ Finish inserting the order in the database 
+✔ List completed orders for each user on their "My Account" page
+
+
+26/05/2017 [2:00]
+- Analytics in the admin section of the system 
+• Show all order with corresponding customer information
+• EOD total
+• Most popular products
+? Review earnings within date range
+
+28/05/2017	[03:00]
+✔ Customer submits their order, and it is 'pending' by default
+✔ After the customer submits their order, the customer is asked to wait...
+✔ Admin section checks DB for any pending orders, and prints them to the admin
+✔ Admin has a choice of accepting or rejecting the order
+✔ Response is given to the customer
+
+30/05/2017 [1:30 -> Mizan said doubleee~]

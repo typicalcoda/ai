@@ -1,4 +1,5 @@
 <?php
+die("index");
 require_once('helper.php');
 ?>
 <!DOCTYPE html>

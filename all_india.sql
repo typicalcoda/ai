@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2017 at 09:11 PM
+-- Generation Time: May 30, 2017 at 08:05 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -58,6 +58,7 @@ INSERT INTO `categories` (`id`, `name`, `description`, `sort_order`) VALUES
 
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
   `firstname` varchar(50) NOT NULL DEFAULT 'User',
   `lastname` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -69,9 +70,10 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `firstname`, `lastname`, `email`, `password`, `telephone`) VALUES
-(1, 'Jackson', 'Moore', 'j.moore@gmail.com', '482c811da5d5b4bc6d497ffa98491e38', '(111) 111 1111'),
-(2, 'Mizan', 'Rahman', 'mizan.rahman@allindia.com', '5ebe2294ecd0e0f08eab7690d2a6ee69', '222-222-2222');
+INSERT INTO `customers` (`id`, `is_admin`, `firstname`, `lastname`, `email`, `password`, `telephone`) VALUES
+(1, 0, 'Jackson', 'Moore', 'j.moore@gmail.com', '5ebe2294ecd0e0f08eab7690d2a6ee69', '(111) 111 1111'),
+(2, 0, 'Mizan', 'Rahman', 'mizan.rahman@allindia.com', '5ebe2294ecd0e0f08eab7690d2a6ee69', '222-222-2222'),
+(3, 1, 'James', 'Bond', 'admin@allindia.com', '5ebe2294ecd0e0f08eab7690d2a6ee69', '');
 
 -- --------------------------------------------------------
 
@@ -104,8 +106,22 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `items` text NOT NULL,
-  `date` timestamp NOT NULL
+  `order_date` timestamp NOT NULL,
+  `status` varchar(25) NOT NULL DEFAULT 'Pending',
+  `preferred_time` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `items`, `order_date`, `status`, `preferred_time`) VALUES
+(1, 1, '[{"Quantity":"1","ProductName":"Chicken Pakura (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Vegetable Pakura (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Onion Bhaji (Starters)","Price":"2.95","Modifiers":[]},{"Quantity":"1","ProductName":"Tandoori Chicken (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Chicken Tikka (Starters)","Price":"3.75","Modifiers":[]}]', '2017-05-29 23:00:00', 'Rejected', '1'),
+(2, 1, '[{"Quantity":"1","ProductName":"Chicken Pakura (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Vegetable Pakura (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Onion Bhaji (Starters)","Price":"2.95","Modifiers":[]},{"Quantity":"1","ProductName":"Tandoori Chicken (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Chicken Tikka (Starters)","Price":"3.75","Modifiers":[]}]', '2017-05-29 23:00:00', 'Accepted', '45:00'),
+(3, 1, '[{"Quantity":"1","ProductName":"Chicken Tikka (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Tandoori Chicken (Starters)","Price":"3.75","Modifiers":[]}]', '2017-05-29 23:00:00', 'Rejected', '45:00'),
+(4, 1, '[{"Quantity":"1","ProductName":"Vegetable Pakura (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Chicken Pakura (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Vegetable Pakura (Starters)","Price":"3.75","Modifiers":[]},{"Quantity":"1","ProductName":"Vegetable Pakura (Starters)","Price":"3.75","Modifiers":[]}]', '2017-05-29 23:00:00', 'Accepted', '2'),
+(5, 1, '[{"Quantity":"1","ProductName":"Vegetable Curry (Side Dishes)","Price":"2.95","Modifiers":[]},{"Quantity":"1","ProductName":"Vegetable Curry (Side Dishes)","Price":"2.95","Modifiers":[]},{"Quantity":"1","ProductName":"Vegetable Curry (Side Dishes)","Price":"2.95","Modifiers":[]}]', '2017-05-29 23:00:00', 'Rejected', '45:00'),
+(6, 1, '[{"Quantity":"1","ProductName":"King Prawn (Basic Curry)","Price":"8.95","Modifiers":[]},{"Quantity":"1","ProductName":"Prawn (Basic Curry)","Price":"5.95","Modifiers":[]},{"Quantity":"1","ProductName":"Chicken Tikka (Basic Curry)","Price":"6.50","Modifiers":[]},{"Quantity":"1","ProductName":"Lamb Tikka (Malaya)","Price":"6.95","Modifiers":[]}]', '2017-05-29 23:00:00', 'Accepted', 'ASAP');
 
 -- --------------------------------------------------------
 
@@ -576,7 +592,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `modifiers`
 --
@@ -586,7 +602,7 @@ ALTER TABLE `modifiers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `products`
 --
