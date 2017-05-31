@@ -50,7 +50,17 @@
 								<li><a href="<?php echo site_url()?>login.php">Online Ordering</a></li>
 								<!--<li><a href="<?php echo site_url()?>login.php">Members</a></li>-->
 								<li><a href="<?php echo site_url()?>testimonials.php">Testimonials</a></li>
-								<li><a href="<?php echo site_url()?>contact.php">Contact Us</a></li>
+								<?php 
+								if(isset($_SESSION['Admin']))
+								{
+									$usr = unserialize($_SESSION['Admin']);
+									if(strlen($usr->id) > 0)
+									{
+										echo '<li><a href="'. site_url() .'admin/reporting.php">Reporting</a></li>';
+									}
+								}
+								?>
+								<li><a href="<?php echo site_url(); ?>contact.php">Contact Us</a></li>
 							</ul>
 						</div>
 					</div>

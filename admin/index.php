@@ -180,50 +180,56 @@
 				function getItems(items){
 					var formattedItems = "";
 					for(var i = 0; i < items.length; i++){
+						var formattedModifier = "";
+						if(items[i].Modifiers.length > 0){
+							for(var x = 0; x < items[i].Modifiers.length; x++){
+								formattedModifier += "-<span style='font-size:12px;font-style:italic;'>" + items[i].Modifiers[x].ModifierName + "  (£" + items[i].Modifiers[x].ModifierPrice + ")</span><br>";
+							}
+						}
 
-			//if item has modifier, apply relevant markup
+						formattedItems += `<tr><td>` + items[i].Quantity + `</td><td>` + items[i].ProductName +  `<br>` + formattedModifier + `</td><td>£` + items[i].Price + `</td></tr>`;
+						
 
-			formattedItems += `<tr><td>` + items[i].Quantity + `</td><td>` + items[i].ProductName + `</td><td>£` + items[i].Price + `</td></tr>`;
-		}
-		return formattedItems;
-	}
-	function showOrders(){
-		var output = "";
-		for (var i = 0; i < orders.length; i++) {
-			output +=  `
-			<div class="order">
-				<span class="customer-name">
-					<a href="#">` + orders[i].customer_name + `</a>
-				</span>
-				<div class="timestamp">`
-					+ (hasNumber(orders[i].preferred_time) ? orders[i].preferred_time + "M" : orders[i].preferred_time ) +	
-					`</div>
-					<div class="items">				
-						<table class="table-hover">
-							<thead>
-								<th>Qty</th>
-								<th>Description</th>
-								<th>Price</th>
-							</thead>
-							<tbody>`+
-								getItems(JSON.parse(orders[i].items))
-								+`</tbody>
-							</table>
-							<div class="total">`+
-								order_sum(JSON.parse(orders[i].items))
-								+`</div>
-							</div>
-							<div class="options">
-								<button onclick="respondToOrder(`+orders[i].id+`, true)" class="accept-order btn btn-success">Accept</button>
-								<button onclick="respondToOrder(`+orders[i].id+`,false)" class="reject-order btn btn-warning">Reject</button>
-							</div>
-						</div>`;
 					}
-					$(".well").html(output);
-
+					return formattedItems;
 				}
+				function showOrders(){
+					var output = "";
+					for (var i = 0; i < orders.length; i++) {
+						output +=  `
+						<div class="order">
+							<span class="customer-name">
+								<a href="#">` + orders[i].customer_name + `</a>
+							</span>
+							<div class="timestamp">`
+								+ (hasNumber(orders[i].preferred_time) ? orders[i].preferred_time + "M" : orders[i].preferred_time ) +	
+								`</div>
+								<div class="items">				
+									<table class="table-hover">
+										<thead>
+											<th>Qty</th>
+											<th>Description</th>
+											<th>Price</th>
+										</thead>
+										<tbody>`+
+											getItems(JSON.parse(orders[i].items))
+											+`</tbody>
+										</table>
+										<div class="total">`+
+											order_sum(JSON.parse(orders[i].items))
+											+`</div>
+										</div>
+										<div class="options">
+											<button onclick="respondToOrder(`+orders[i].id+`, true)" class="accept-order btn btn-success">Accept</button>
+											<button onclick="respondToOrder(`+orders[i].id+`,false)" class="reject-order btn btn-warning">Reject</button>
+										</div>
+									</div>`;
+								}
+								$(".well").html(output);
+
+							}
 
 
-			</script>
-		</body>
-		</html>
+						</script>
+					</body>
+					</html>

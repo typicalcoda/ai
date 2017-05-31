@@ -18,7 +18,7 @@ try {$db = new PDO("mysql:host=$server;dbname=all_india", $user, $pass);$db->set
 
 
 // UTILITIES
-$site_url = 'http://localhost/ai/';
+$site_url = 'http://localhost/all_india/';
  function assets($uri){
 	global $site_url;
 	return $site_url. "public/".$uri;

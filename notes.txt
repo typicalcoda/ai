@@ -5,7 +5,6 @@
 ✔ Display total price at the bottom of the cart
 ✔ Clear all functionality should remove all products and reset total price
 
-
 14/04/2017
 ✔ Complete tasks from previous notes
 ✔ Change the total at the bottom of the cart when thw quantity for a given item is changed
@@ -69,3 +68,5 @@
 ✔ Response is given to the customer
 
 30/05/2017 [1:30 -> Mizan said doubleee~]
+what are 
+£140
